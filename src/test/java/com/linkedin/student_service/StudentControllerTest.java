@@ -36,4 +36,15 @@ public class StudentControllerTest {
                 .andExpect(jsonPath("name").value("Mark"))
                 .andExpect(jsonPath("grade").value(10));
     }
+
+    @Test
+    void getStudent_forMissingStudent_status404() throws Exception {
+
+        //given
+        given(studentService.getStudentById(anyLong())).willThrow(StudentNotFoundException.class);
+
+        //when //then
+        mockMvc.perform(get("/students/1"))
+                .andExpect(status().isNotFound());
+    }
 }
