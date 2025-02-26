@@ -14,6 +14,6 @@ public class StudentService {
 
     @Cacheable("students")
     public Student getStudentById(Long id) {
-        return studentRepository.findById(id).orElse(null);
+        return studentRepository.findById(id).orElseThrow(StudentNotFoundException::new);
     }
 }

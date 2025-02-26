@@ -1,12 +1,14 @@
 package com.linkedin.student_service;
 
 import jakarta.transaction.Transactional;
+import org.assertj.core.api.BDDAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
+import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.assertj.core.api.BDDAssertions.then;
 
 @SpringBootTest(webEnvironment = WebEnvironment.NONE)
@@ -33,4 +35,19 @@ public class StudentServiceTest {
         then(student.getName()).isEqualTo("Mark");
         then(student.getId()).isNotNull();
     }
+
+    @Test
+    void getStudentById_whenMissingStudent_notFoundExceptionThrown() {
+
+        //given
+        Long id = 123L;
+
+        //when
+        Throwable throwable = catchThrowable(() -> studentService.getStudentById(id));
+
+        //then
+        BDDAssertions.then(throwable).isInstanceOf(StudentNotFoundException.class);
+
+    }
+
 }
