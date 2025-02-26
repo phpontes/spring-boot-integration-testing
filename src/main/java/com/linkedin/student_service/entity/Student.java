@@ -1,4 +1,4 @@
-package com.linkedin.student_service;
+package com.linkedin.student_service.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

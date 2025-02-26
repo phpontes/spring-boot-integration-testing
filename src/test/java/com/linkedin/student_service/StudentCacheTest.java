@@ -1,5 +1,8 @@
 package com.linkedin.student_service;
 
+import com.linkedin.student_service.entity.Student;
+import com.linkedin.student_service.repository.StudentRepository;
+import com.linkedin.student_service.service.StudentService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

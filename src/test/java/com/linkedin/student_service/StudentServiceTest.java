@@ -1,5 +1,9 @@
 package com.linkedin.student_service;
 
+import com.linkedin.student_service.entity.Student;
+import com.linkedin.student_service.exceptions.StudentNotFoundException;
+import com.linkedin.student_service.repository.StudentRepository;
+import com.linkedin.student_service.service.StudentService;
 import jakarta.transaction.Transactional;
 import org.assertj.core.api.BDDAssertions;
 import org.junit.jupiter.api.DisplayName;
